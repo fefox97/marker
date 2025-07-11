@@ -1,0 +1,6 @@
+notion-client
+streamlit
+streamlit-ace
+python-dotenv
+md2notion
+md2notionpage

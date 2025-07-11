@@ -1,0 +1,28 @@
+services:
+  marker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: marker:latest
+    container_name: marker
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./marker:/app/marker
+      - marker_data:/root/
+    environment:
+      - NOTION_SECRET=${NOTION_SECRET}
+      - NOTION_DATABASE_ID=${NOTION_DATABASE_ID}
+      - NOTION_PAGE_ID=${NOTION_PAGE_ID}
+      - OLLAMA_MODEL=${OLLAMA_MODEL}
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
+    networks:
+      - marker_network
+
+volumes:
+  marker_data:
+    driver: local
+
+networks:
+  marker_network:
+    driver: bridge
